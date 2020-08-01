@@ -157,7 +157,7 @@ void ImagePublisher::onInit()
         int num = std::stoi(filename_);  // num is 1234798797
         cap_.open(num);
       } catch (const std::invalid_argument &) {  // if file name is string
-        cap_.open(filename_);
+        cap_.open(filename_, cv::CAP_FFMPEG);  // @OTSAW: FFMPEG
       }
       CV_Assert(cap_.isOpened());
       cap_.read(image_);
